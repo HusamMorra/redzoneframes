@@ -1,0 +1,1658 @@
+/* red zone frames stylesheet
+   comp 3340 - husam morra */
+
+/* theme 1: classic theme, default light look */
+:root,
+[data-theme="classic-theme"] {
+    --color-bg: #F7F7F5;
+    --color-surface: #FFFFFF;
+    --color-text: #15181D;
+    --color-text-muted: #5A5F66;
+    --color-primary: #013369;   /* nfl shield navy blue */
+    --color-primary-dark: #01234A;
+    --color-accent: #D50A0A;    /* electric red pop, swapped in for the lime */
+    --color-border: #E1E1DE;
+}
+
+/* theme 2: night theme, dark mode with red accent */
+[data-theme="night-theme"] {
+    --color-bg: #15181D;
+    --color-surface: #1F232A;
+    --color-text: #F2F2F0;
+    --color-text-muted: #9AA0A6;
+    --color-primary: #013369;
+    --color-primary-dark: #01234A;
+    --color-accent: #D50A0A;
+    --color-border: #2C3038;
+}
+
+/* theme 3: gold theme, bold black and gold */
+[data-theme="gold-theme"] {
+    --color-bg: #14110F;
+    --color-surface: #1F1A16;
+    --color-text: #F5EFE6;
+    --color-text-muted: #C9B79C;
+    --color-primary: #A3151B;   /* deep red */
+    --color-primary-dark: #700D11;
+    --color-accent: #FFC72C;   /* gold */
+    --color-border: #3A2F26;
+}
+
+/* basic reset, applies to the whole site */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    /* this transition is what makes switching themes fade instead of just snapping instantly */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, .logo {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* inline text links inside paragraphs need their own underline since the
+   a rule above removes text-decoration everywhere by default */
+.text-link {
+    text-decoration: underline;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.text-link:hover {
+    color: var(--color-primary-dark);
+}
+
+/* header and nav, shows up on every page */
+.site-header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+}
+
+.logo span {
+    color: var(--color-accent);
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 28px;
+}
+
+.main-nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.main-nav a:hover {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-accent);
+}
+
+.nav-cart {
+    background-color: var(--color-primary);
+    color: #fff !important;
+    padding: 8px 16px !important;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-cart:hover {
+    background-color: var(--color-primary-dark);
+    border-bottom-color: transparent !important;
+}
+
+/* only shows up when an admin is logged in, see header.php */
+.nav-admin-link {
+    color: var(--color-accent) !important;
+    font-weight: 700;
+}
+
+/* hamburger button, hidden on desktop, only shows on mobile down in the media query */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-text);
+    border-radius: 2px;
+}
+
+.site-main {
+    min-height: 60vh;
+}
+
+/* buttons, used all over the whole site */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-accent {
+    background-color: var(--color-accent);
+    color: #fff;
+}
+
+.btn-accent:hover {
+    filter: brightness(0.9);
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    align-self: center;
+}
+
+.btn-full {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 1.05rem;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.btn-link-danger {
+    color: #A3151B;
+}
+
+.btn-link-danger:hover {
+    text-decoration: underline;
+}
+
+/* footer, shows up on every page */
+.site-footer {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    margin-top: 60px;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-col h4 {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col ul li a:hover {
+    color: var(--color-primary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 16px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+/* responsive stuff for phones and tablets, mostly the nav */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-surface);
+        border-bottom: 1px solid var(--color-border);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .main-nav.nav-open {
+        max-height: 80vh; /* scales with the screen instead of a fixed number so it doesnt clip items again later */
+        overflow-y: auto; /* scrolls instead of hiding stuff if it still doesnt fit */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 20px;
+    }
+
+    .main-nav li {
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 14px 0;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 24px;
+    }
+}
+
+/* homepage stuff (index.php) */
+.hero {
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.75rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.text-accent {
+    color: var(--color-accent);
+}
+
+.hero-sub {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.05rem;
+    opacity: 0.9;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* generic section wrapper, used on pretty much every page not just the homepage */
+.section {
+    padding: 32px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.section-sub {
+    text-align: center;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+}
+
+.section-cta {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* alternating light backgrounds between sections so the page isnt just one giant
+   stretch of the same color, same trick a lot of sports/retail sites use */
+.section-light {
+    background-color: var(--color-bg);
+}
+
+.section-accent {
+    background-color: var(--color-bg);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.category-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 32px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+}
+
+.category-card h2 {
+    margin-bottom: 10px;
+}
+
+.category-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* used on the homepage preview grid and the full shop page */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* hover flip card effect, built with pure css 3d transforms, no js needed */
+.product-card {
+    perspective: 1000px;
+    height: 340px;
+}
+
+.product-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.product-card:hover .product-card-inner {
+    transform: rotateY(180deg);
+}
+
+.product-card-front,
+.product-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.product-card-front img {
+    height: 200px;
+    object-fit: contain;
+    margin: 0 auto 12px;
+}
+
+.product-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.product-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+/* wraps the canvas for the admin dashboard sales chart */
+.chart-wrap {
+    max-width: 700px;
+    height: 350px;
+    margin: 0 auto;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+/* generic empty state message, used all over the place when theres nothing to show */
+.empty-state {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-style: italic;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+}
+
+.request-teaser {
+    text-align: center;
+}
+
+.request-teaser-inner {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    border-top: 4px solid var(--color-accent);
+}
+
+.request-teaser-inner .btn {
+    margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* homepage testimonial cards */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.testimonial-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.testimonial-stars {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.testimonial-comment {
+    font-style: italic;
+    margin-bottom: 14px;
+}
+
+.testimonial-meta {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+@media (max-width: 800px) {
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* shop page (shop.php) */
+.shop-header {
+    text-align: center;
+}
+
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    padding: 10px 22px;
+    border: 1px solid var(--color-border);
+    border-radius: 30px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-tab:hover {
+    background-color: var(--color-bg);
+}
+
+.filter-tab-active {
+    background-color: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+
+.shop-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.category-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.category-badge-active {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.category-badge-legend {
+    background-color: var(--color-accent);
+    color: #fff;
+}
+
+/* product detail page (product.php) */
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.product-detail-image img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+}
+
+.product-meta {
+    color: var(--color-text-muted);
+    margin-bottom: 10px;
+}
+
+.product-rating {
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.product-description {
+    margin-bottom: 20px;
+}
+
+.product-price-large {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.add-to-cart-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.add-to-cart-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.add-to-cart-form select,
+.add-to-cart-form input {
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+.materials-box {
+    margin-top: 60px;
+    padding: 30px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+}
+
+.materials-box h2 {
+    margin-bottom: 12px;
+}
+
+.reviews-section {
+    margin-top: 40px;
+}
+
+.review-card {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.review-rating {
+    color: var(--color-accent);
+    margin-bottom: 6px;
+}
+
+.review-author {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin-top: 6px;
+}
+
+@media (max-width: 800px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr;
+    }
+    .shop-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* request a player page */
+.request-form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.request-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 14px;
+}
+
+.request-form input,
+.request-form textarea {
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    resize: vertical;
+}
+
+/* used on a bunch of different forms across the site for that little gray hint text */
+.field-hint {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-top: 4px;
+}
+
+/* success/error message boxes, used on basically every form on the site */
+.form-message {
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 16px 0;
+    font-weight: 600;
+}
+
+.form-message-success {
+    background-color: #E3F5E1;
+    color: #1B5E20;
+    border: 1px solid #A5D6A7;
+}
+
+.form-message-error {
+    background-color: #FDECEA;
+    color: #A3151B;
+    border: 1px solid #F5C6CB;
+}
+
+/* design your own page */
+.designer-form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.designer-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 14px;
+}
+
+.designer-form select,
+.designer-form input[type="text"],
+.designer-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+.designer-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 2px solid var(--color-border);
+}
+
+/* the nameplate text box, hidden until the engraving checkbox is checked, see designer.js */
+.custom-fields {
+    display: none;
+    padding: 16px;
+    background-color: var(--color-bg);
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.designer-example {
+    margin: 24px 0;
+    text-align: center;
+}
+
+.designer-example img {
+    max-width: 320px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    margin: 0 auto;
+}
+
+.designer-example-caption {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* cart page */
+.cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 16px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+}
+
+.cart-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.cart-item-tag {
+    font-size: 0.7rem;
+    background-color: var(--color-accent);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.cart-item-meta {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.cart-qty-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.cart-qty-form input {
+    width: 60px;
+    padding: 6px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+
+.cart-item-price {
+    text-align: right;
+}
+
+.cart-item-unit {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.cart-item-subtotal {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.3rem;
+}
+
+.cart-summary {
+    margin-top: 30px;
+    padding: 24px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    max-width: 400px;
+    margin-left: auto;
+}
+
+.cart-summary-note {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+}
+
+/* custom cart items dont have a real product photo, so this collapses that grid column */
+.cart-item-no-image {
+    grid-template-columns: 1fr auto;
+}
+
+@media (max-width: 600px) {
+    .cart-item {
+        grid-template-columns: 80px 1fr;
+    }
+    .cart-item-price {
+        grid-column: 1 / -1;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+}
+
+/* login and register pages */
+.auth-page {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 40px;
+    max-width: 420px;
+    width: 100%;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.auth-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 12px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* my account page */
+.account-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 24px;
+    margin-top: 20px;
+    align-items: start;
+}
+
+.account-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.account-card h2 {
+    margin-bottom: 14px;
+}
+
+.account-card p {
+    margin-bottom: 8px;
+}
+
+.order-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.order-meta {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+/* status badges for order tracking, used on my-account.php and admin/manage-orders.php */
+.order-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.order-status-pending {
+    background-color: #FFF3CD;
+    color: #856404;
+}
+
+.order-status-processing {
+    background-color: #CCE5FF;
+    color: #004085;
+}
+
+.order-status-shipped,
+.order-status-delivered {
+    background-color: #D4EDDA;
+    color: #155724;
+}
+
+.order-status-cancelled {
+    background-color: #F8D7DA;
+    color: #721C24;
+}
+
+.order-total {
+    font-family: 'Anton', sans-serif;
+}
+
+/* wraps a whole order (info, items, review links) in one box with one line
+   between orders instead of a bunch of separate borders everywhere */
+.order-block {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.order-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.order-items-list {
+    padding: 4px 0 12px;
+}
+
+.order-item-line {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+}
+
+.order-review-links {
+    display: flex;
+    gap: 16px;
+    padding: 8px 0 14px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 700px) {
+    .account-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* review submission page (review-submit.php) */
+.review-form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.review-form label {
+    font-weight: 600;
+    margin-top: 14px;
+}
+
+.review-form textarea {
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    resize: vertical;
+}
+
+/* star rating widget, built with radio buttons and css, no js needed.
+   putting the stars in reverse order in the html lets the ~ selector style
+   everything to the left of whatevers checked, thats how clicking star 3
+   fills in stars 1 through 3 */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 2rem;
+    color: var(--color-border);
+    cursor: pointer;
+    margin-top: 0 !important;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: var(--color-accent);
+}
+
+/* checkout and order confirmation pages */
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.checkout-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 14px;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    resize: vertical;
+}
+
+.checkout-summary {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 24px;
+    align-self: start;
+}
+
+.checkout-summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    padding: 6px 0;
+}
+
+.checkout-summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-top: 1px solid var(--color-border);
+    margin-top: 8px;
+}
+
+.checkout-summary-total {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.3rem;
+    border-top: 2px solid var(--color-border);
+    margin-top: 12px;
+    padding-top: 12px;
+}
+
+.confirmation-box {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 40px;
+}
+
+.confirmation-items {
+    text-align: left;
+    margin: 24px 0;
+}
+
+.confirmation-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.9rem;
+}
+
+.confirmation-total {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+@media (max-width: 800px) {
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* static pages, about/contact/size-guide/shipping-returns/privacy-policy */
+.static-page {
+    max-width: 800px;
+}
+
+.static-page h1 {
+    margin-bottom: 20px;
+}
+
+.static-page h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.static-page p {
+    margin-bottom: 16px;
+}
+
+.contact-info {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 24px;
+    margin: 20px 0;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+/* admin panel, shared across all the admin pages */
+.admin-header {
+    margin-bottom: 20px;
+}
+
+.admin-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--color-border);
+}
+
+.admin-nav-link {
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.admin-nav-link:hover {
+    background-color: var(--color-bg);
+}
+
+.admin-nav-active {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.admin-nav-danger {
+    margin-left: auto;
+    color: #A3151B;
+}
+
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.admin-stat-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+}
+
+.admin-stat-number {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.2rem;
+    color: var(--color-primary);
+}
+
+.admin-stat-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 4px;
+}
+
+/* the dashboard sales chart section */
+.admin-chart-section {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.admin-chart-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.admin-total-sales-box {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.admin-total-sales-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.admin-total-sales-number {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.6rem;
+    color: var(--color-primary);
+}
+
+@media (max-width: 800px) {
+    .admin-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* admin tables and forms, shared across manage-players, manage-orders, manage-users, manage-requests */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+    min-width: 600px;
+}
+
+/* wraps the table so on phones only the table scrolls sideways instead of the whole page */
+.admin-table-wrap {
+    overflow-x: auto;
+    margin-top: 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.admin-table th {
+    background-color: var(--color-bg);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.admin-table-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.admin-table-sub {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.admin-table-reason {
+    max-width: 250px;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.admin-table-order-item {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.admin-table-actions {
+    white-space: nowrap;
+}
+
+.admin-table-actions .admin-action-link {
+    margin-right: 12px;
+}
+
+.admin-table-actions .admin-action-link:last-child {
+    margin-right: 0;
+}
+
+/* small text style action links inside admin tables, different from btn-link-danger
+   which is meant to look like a full button (used for the logout button) */
+.admin-action-link {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.admin-action-link:hover {
+    text-decoration: underline;
+}
+
+.admin-action-danger {
+    color: #A3151B;
+}
+
+.admin-form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 20px 0;
+}
+
+.admin-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 14px;
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+.admin-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    margin-top: 14px;
+}
+
+.admin-checkbox-label input {
+    width: auto;
+}
+
+.admin-inline-form select {
+    padding: 6px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+
+/* status badges on manage-users.php */
+.admin-status-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.admin-status-active {
+    background-color: #D4EDDA;
+    color: #155724;
+}
+
+.admin-status-disabled {
+    background-color: #F8D7DA;
+    color: #721C24;
+}
+
+/* status badges on manage-requests.php, different possible values than the user ones above */
+.admin-status-pending {
+    background-color: #FFF3CD;
+    color: #856404;
+}
+
+.admin-status-approved {
+    background-color: #D4EDDA;
+    color: #155724;
+}
+
+.admin-status-declined {
+    background-color: #F8D7DA;
+    color: #721C24;
+}
+
+/* theme switcher page (admin/template-switcher.php) */
+.theme-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.theme-option:hover {
+    border-color: var(--color-primary);
+}
+
+.theme-option-active {
+    border-color: var(--color-primary);
+    background-color: var(--color-bg);
+}
+
+.theme-option input[type="radio"] {
+    width: auto;
+}
+
+.theme-swatch {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border);
+}
+
+.theme-swatch-classic-theme {
+    background: linear-gradient(135deg, #F7F7F5 50%, #013369 50%);
+}
+
+.theme-swatch-night-theme {
+    background: linear-gradient(135deg, #15181D 50%, #C6FF3B 50%);
+}
+
+.theme-swatch-gold-theme {
+    background: linear-gradient(135deg, #14110F 50%, #FFC72C 50%);
+}
+
+.theme-option-text h3 {
+    margin-bottom: 4px;
+}
+
+.theme-option-text p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.theme-picker .btn {
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+/* status monitor page (backend/status-monitor.php) */
+.status-list {
+    max-width: 500px;
+    margin: 20px 0;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.status-row:last-child {
+    border-bottom: none;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-dot-online {
+    background-color: #28A745;
+}
+
+.status-dot-offline {
+    background-color: #DC3545;
+}
+
+.status-label {
+    flex: 1;
+    font-weight: 600;
+}
+
+.status-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-text-online {
+    color: #28A745;
+}
+
+.status-text-offline {
+    color: #DC3545;
+}
+
+.status-refresh-note {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
