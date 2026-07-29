@@ -10,7 +10,7 @@ $redirectTo = isset($_GET['redirect']) ? $_GET['redirect'] : (isset($_POST['redi
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $firstName = trim($_POST['first_name'] ?? '');
     $lastName = trim($_POST['last_name'] ?? '');
-    $email = trim($_POST['email'] ?? '');
+    $email = strtolower(trim($_POST['email'] ?? ''));
     $password = $_POST['password'] ?? '';
     $confirmPassword = $_POST['confirm_password'] ?? '';
 
@@ -59,7 +59,9 @@ require_once __DIR__ . '/includes/header.php';
 
 <section class="container section auth-page">
     <div class="auth-card">
-        <h1>Create Your Account</h1>
+       <h1>Create Your Account</h1>
+	<!-- context sensitive help link -->
+			<p class="field-hint">Need help? See our <a href="wiki/account-help.php" class="text-link">Account Help guide</a>.</p>
 
         <?php if ($errorMessage): ?>
             <div class="form-message form-message-error"><?php echo htmlspecialchars($errorMessage); ?></div>

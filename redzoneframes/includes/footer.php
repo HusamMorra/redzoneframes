@@ -19,15 +19,13 @@
 				<li><a href="/redzoneframes/privacy-policy.php">Privacy Policy</a></li>
             </ul>
         </div>
-        <div class="footer-col">
-            <h4>Help</h4>
-            <ul>
-                <li><a href="/redzoneframes/wiki/how-to-order.php">How to Order</a></li>
-                <li><a href="/redzoneframes/wiki/how-to-design.php">How to Design Your Own</a></li>
-                <li><a href="/redzoneframes/wiki/sizing-help.php">Sizing Help</a></li>
-                <li><a href="/redzoneframes/contact.php">Contact Us</a></li>
-            </ul>
-        </div>
+       <div class="footer-col">
+    <h4>Help</h4>
+    <ul>
+        <li><a href="/redzoneframes/wiki/index.php">Help Center</a></li>
+        <li><a href="/redzoneframes/contact.php">Contact Us</a></li>
+    </ul>
+</div>
     </div>
     <div class="footer-bottom">
         <p>&copy; <?php echo date("Y"); ?> Red Zone Frames. All rights reserved. Built for COMP 3340.</p>

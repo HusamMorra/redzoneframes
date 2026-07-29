@@ -25,6 +25,8 @@ require_once __DIR__ . '/includes/header.php';
 <section class="container section">
     <h1><?php echo isset($_SESSION['is_new_account']) ? 'Welcome' : 'Welcome back'; ?>, <?php echo htmlspecialchars($user['first_name']); ?></h1>
 <?php unset($_SESSION['is_new_account']); // dont want it saying welcome every time, just the first login after making the account ?>
+		<!-- context sensitive help link -->
+		<p class="field-hint">Need help with your account? See our <a href="wiki/account-help.php" class="text-link">Account Help guide</a>.</p>
 
 	<?php if (isset($_GET['reviewed'])): ?>
     <div class="form-message form-message-success">Thanks for your review!</div>

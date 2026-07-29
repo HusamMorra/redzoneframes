@@ -1,5 +1,4 @@
-/* red zone frames stylesheet
-   comp 3340 - husam morra */
+/* red zone frames stylesheet */
 
 /* theme 1: classic theme, default light look */
 :root,
@@ -10,7 +9,7 @@
     --color-text-muted: #5A5F66;
     --color-primary: #013369;   /* nfl shield navy blue */
     --color-primary-dark: #01234A;
-    --color-accent: #D50A0A;    /* electric red pop, swapped in for the lime */
+    --color-accent: #D50A0A;    /* red pop */
     --color-border: #E1E1DE;
 }
 
@@ -376,8 +375,7 @@ img {
     margin-top: 30px;
 }
 
-/* alternating light backgrounds between sections so the page isnt just one giant
-   stretch of the same color, same trick a lot of sports/retail sites use */
+/* alternating light backgrounds between sections so the page isnt just one giant stretch of the same color, same trick a lot of sports/retail sites use */
 .section-light {
     background-color: var(--color-bg);
 }
@@ -1655,4 +1653,54 @@ img {
     font-size: 0.85rem;
     color: var(--color-text-muted);
     font-style: italic;
+}
+
+/* wiki hub page */
+.wiki-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.wiki-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 24px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.wiki-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+}
+
+.wiki-card h3 {
+    margin-bottom: 8px;
+}
+
+.wiki-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+@media (max-width: 800px) {
+    .wiki-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* video */
+.wiki-video-wrap {
+    max-width: 700px;
+    margin: 20px 0;
+}
+
+.wiki-video-wrap iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
 }

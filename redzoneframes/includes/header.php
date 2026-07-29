@@ -70,7 +70,7 @@ if (!isset($pageDescription)) {
                 <li><a href="/redzoneframes/design-your-own.php">Design Your Own</a></li>
                 <li><a href="/redzoneframes/about.php">About</a></li>
                 <li><a href="/redzoneframes/contact.php">Contact</a></li>
-                <li><a href="/redzoneframes/wiki/how-to-order.php">Help</a></li>
+                <li><a href="/redzoneframes/wiki/index.php">Help</a></li>
                 <li><a href="/redzoneframes/cart.php" class="nav-cart">Cart</a></li>
              <?php if (isset($_SESSION['admin_id'])): ?>
     <li><a href="/redzoneframes/admin/dashboard.php" class="nav-admin-link">Admin Panel</a></li>

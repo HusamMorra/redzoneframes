@@ -22,7 +22,9 @@ $sizes = array_filter($allOptions, fn($o) => $o['option_type'] === 'size');
 
 <section class="container section">
     <h1>Design Your Own</h1>
-    <p>Build a frame for anyone - a player we don't carry yet, a college favorite, even yourself. Fill in the details below and the price updates as you go.</p>
+	<p>Build a frame for anyone - a player we don't carry yet, a college favorite, even yourself. Fill in the details below and the price updates as you go.</p>
+		<!-- context sensitive help link -->
+		<p class="field-hint">Need help? See our <a href="wiki/how-to-design.php" class="text-link">Design Your Own guide</a>.</p>
 
     <form action="cart.php" method="POST" class="designer-form" id="designerForm">
         <input type="hidden" name="is_custom" value="1">

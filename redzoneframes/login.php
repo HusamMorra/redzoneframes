@@ -6,7 +6,7 @@ require_once __DIR__ . '/includes/db.php';
 $errorMessage = '';
 $redirectTo = isset($_GET['redirect']) ? $_GET['redirect'] : 'my-account.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email'] ?? '');
+    $email = strtolower(trim($_POST['email'] ?? '')); //ensure its not case sensitive
     $password = $_POST['password'] ?? '';
     $redirectTo = $_POST['redirect'] ?? 'my-account.php';
    $stmt = $pdo->prepare("SELECT id, first_name, password_hash, role, is_active FROM users WHERE email = ?");
@@ -44,6 +44,8 @@ require_once __DIR__ . '/includes/header.php';
 <section class="container section auth-page">
     <div class="auth-card">
         <h1>Log In</h1>
+		<!-- context sensitive help link -->
+		<p class="field-hint">Need help? See our <a href="wiki/account-help.php" class="text-link">Account Help guide</a>.</p>
         <?php if ($errorMessage): ?>
             <div class="form-message form-message-error"><?php echo $errorMessage; ?></div>
         <?php endif; ?>

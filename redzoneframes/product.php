@@ -84,7 +84,8 @@ $avgRating = count($reviews) > 0 ? round(array_sum(array_column($reviews, 'ratin
                     <?php endforeach; ?>
                 </select>
 
-                <label for="frameSize">Size</label>
+               <!-- context sensitive help link -->
+<label for="frameSize">Size <a href="wiki/sizing-help.php" class="text-link" style="font-size:0.75rem;">(sizing help)</a></label>
                 <select name="frame_size" id="frameSize" required>
                     <?php foreach ($sizes as $size): ?>
                         <option value="<?php echo htmlspecialchars($size['option_value']); ?>" data-modifier="<?php echo $size['price_modifier']; ?>">

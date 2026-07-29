@@ -14,10 +14,14 @@ $totalUsers = $pdo->query("SELECT COUNT(*) FROM users WHERE role = 'customer'")-
 
 //i set the limit as 10 so the chart doesnt expand too much and look unpleasant 
 $salesStmt = $pdo->query("
-    SELECT players.player_name, SUM(order_items.quantity * order_items.unit_price) AS total_sales
-    FROM order_items
-    JOIN players ON players.id = order_items.player_id
-    GROUP BY players.id
+    (SELECT players.player_name AS label, SUM(order_items.quantity * order_items.unit_price) AS total_sales
+     FROM order_items
+     JOIN players ON players.id = order_items.player_id
+     GROUP BY players.id)
+    UNION ALL
+    (SELECT 'Custom Builds' AS label, SUM(order_items.quantity * order_items.unit_price) AS total_sales
+     FROM order_items
+     WHERE order_items.player_id IS NULL)
     ORDER BY total_sales DESC
     LIMIT 10
 ");
@@ -43,6 +47,7 @@ require_once __DIR__ . '/../includes/header.php';
         <a href="manage-users.php" class="admin-nav-link">Manage Users</a>
         <a href="manage-requests.php" class="admin-nav-link">Player Requests</a>
         <a href="template-switcher.php" class="admin-nav-link">Site Theme</a>
+		<a href="wiki/admin-guide.php" class="admin-nav-link">Help</a>
         <a href="logout.php" class="admin-nav-link admin-nav-danger">Log Out</a>
     </nav>
 
@@ -79,7 +84,7 @@ require_once __DIR__ . '/../includes/header.php';
             </div>
             <script>
 				// this get the actual numbers and puts them in an arrow
-                window.salesLabels = <?php echo json_encode(array_column($salesData, 'player_name')); ?>;
+                window.salesLabels = <?php echo json_encode(array_column($salesData, 'label')); ?>;
 window.salesData = <?php echo json_encode(array_map('floatval', array_column($salesData, 'total_sales'))); ?>;
             </script>
         <?php else: ?>

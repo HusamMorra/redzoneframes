@@ -30,6 +30,7 @@ require_once __DIR__ . '/../includes/header.php';
         <a href="manage-users.php" class="admin-nav-link">Manage Users</a>
         <a href="manage-requests.php" class="admin-nav-link">Player Requests</a>
         <a href="template-switcher.php" class="admin-nav-link">Site Theme</a>
+		<a href="wiki/admin-guide.php" class="admin-nav-link">Help</a>
         <a href="logout.php" class="admin-nav-link admin-nav-danger">Log Out</a>
     </nav>
     <?php if (isset($_GET['deleted'])): ?>

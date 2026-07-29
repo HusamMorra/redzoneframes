@@ -95,6 +95,8 @@ $savedAddress = $userStmt->fetch(PDO::FETCH_ASSOC);
 
 <section class="container section checkout-page">
     <h1>Checkout</h1>
+    <!-- context sensitive help links, both relevant right at the point of checking out -->
+    <p class="field-hint">Need help? See our <a href="wiki/how-to-order.php" class="text-link">How to Order guide</a> or our <a href="wiki/shipping-faq.php" class="text-link">Shipping FAQ</a>.</p>
 
     <?php if ($errorMessage): ?>
         <div class="form-message form-message-error"><?php echo htmlspecialchars($errorMessage); ?></div>
@@ -114,9 +116,13 @@ $savedAddress = $userStmt->fetch(PDO::FETCH_ASSOC);
             <input type="text" name="province" id="province" maxlength="50" required
                    value="<?php echo htmlspecialchars($savedAddress['province'] ?? ''); ?>">
 
+			<!-- this is to ensure the format matches a postal code or zip code -->
             <label for="postalCode">Postal/Zip Code</label>
-            <input type="text" name="postal_code" id="postalCode" maxlength="10" required
-                   value="<?php echo htmlspecialchars($savedAddress['postal_code'] ?? ''); ?>">
+			<input type="text" name="postal_code" id="postalCode" maxlength="10" required
+      	 		pattern="^[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]$|^[0-9]{5}(-[0-9]{4})?$" 
+				title="Canadian postal code (e.g. A1B 2C3) or US zip code (e.g. 12345)"
+      	 		value="<?php echo htmlspecialchars($savedAddress['postal_code'] ?? ''); ?>">
+
 
             <p class="field-hint">No real payment is processed. Placing the order saves it to our system as "pending."</p>
 

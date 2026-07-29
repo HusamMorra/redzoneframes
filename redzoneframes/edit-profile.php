@@ -80,9 +80,11 @@ require_once __DIR__ . '/includes/header.php';
             <input type="text" name="province" id="province" maxlength="50"
                    value="<?php echo htmlspecialchars($user['province'] ?? ''); ?>">
 
-            <label for="postalCode">Postal/Zip Code</label>
-            <input type="text" name="postal_code" id="postalCode" maxlength="10"
-                   value="<?php echo htmlspecialchars($user['postal_code'] ?? ''); ?>">
+           <label for="postalCode">Postal/Zip Code</label>
+			<input type="text" name="postal_code" id="postalCode" maxlength="10"
+      		 pattern="^[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]$|^[0-9]{5}(-[0-9]{4})?$"
+       			title="Canadian postal code (e.g. A1C 2C3) or US zip code (e.g. 12345)"
+       			value="<?php echo htmlspecialchars($user['postal_code'] ?? ''); ?>">
             <button type="submit" class="btn btn-full">Save Changes</button>
         </form>
         <a href="my-account.php" class="btn-link">&larr; Back to My Account</a>
