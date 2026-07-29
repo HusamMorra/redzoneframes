@@ -21,6 +21,7 @@ redzoneframes/
 - images/
   - players/ (20 player frame images)
   - examplenameplate.png
+  - logo.png (thsi is the favourite icon)
 - includes/
   - db.example.php (copy this to db.php and fill in real credentials)
   - header.php, footer.php
