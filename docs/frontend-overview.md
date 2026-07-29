@@ -1,6 +1,6 @@
 # Front-End Documentation
 
-This document explains the front-end structure of my website, what pages exist, how they're organized, and the design decisions behind the look and feel.
+This document explains the front-end structure of my website, what pages exist, how they're organized, and the design decisions behind the look and feel. Anytime you see a file name, you can place it after http://morrah.myweb.cs.uwindsor.ca/redzoneframes/ to see the live site.
 
 ## Design
 
