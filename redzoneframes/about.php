@@ -21,4 +21,6 @@ require_once __DIR__ . '/includes/header.php';
 <p>Have a question, a custom idea, or a player you think we should carry? See our <a href="contact.php" class="text-link">Contact page</a> or <a href="request-player.php" class="text-link">request a player</a> - we're always expanding the roster.</p>
 </section>
 
+<p>The 20 player frame graphics used throughout the catalog were generated with the help of AI image generation. Reference: OpenAI. (2026). ChatGPT (GPT-5.5) [Large language model]. https://chatgpt.com</p>
+
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
