@@ -56,3 +56,4 @@ backend/status-monitor.php is a status check page that reports whether the datab
 ## Image Credits
 
 The 20 player frame graphics used throughout the catalog are original artwork generated using ChatGPT, not real photographs or licensed jersey imagery. I got approval to do this from Dr. Kobti.
+Reference: OpenAI. (2026). ChatGPT (GPT-5.5) [Large language model]. https://chatgpt.com
