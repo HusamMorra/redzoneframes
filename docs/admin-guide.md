@@ -51,4 +51,4 @@ Video content is embedded from YouTube as Unlisted videos rather than hosted dir
 
 ## Database Guide
 
-Check docs/database-guide.md or the live version at admin/wiki/database-guide.php, for a breakdown of the tables and how they connect.
+Check admin/wiki/database-guide.php for a breakdown of the tables and how they connect.
