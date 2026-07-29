@@ -1,8 +1,7 @@
-anytime you see /..., you can place it after http://morrah.myweb.cs.uwindsor.ca/redzoneframes to see the live site.
-
 # Admin Guide
 
 This is like the admin help/wiki page (admin/wiki/admin-guide.php) but I added it here too so its part of the documentation. 
+Anytime you see /..., you can place it after http://morrah.myweb.cs.uwindsor.ca/redzoneframes to see the live site.
 
 ## Logging In
 
