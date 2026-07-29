@@ -49,6 +49,10 @@ This document explains the front-end structure of my website, what pages exist, 
 
 The full admin interface lives under /admin/, but its behind its own separate login. Check docs/admin-guide.md for more info on this.
 
+## Backend
+
+backend/status-monitor.php is a status check page that reports whether the database connection, product catalog, key pages, and the images folder are all reachable and working. It runs a fresh check every time the page loads and requires no login to view.
+
 ## Image Credits
 
 The 20 player frame graphics used throughout the catalog are original artwork generated using ChatGPT, not real photographs or licensed jersey imagery. I got approval to do this from Dr. Kobti.
