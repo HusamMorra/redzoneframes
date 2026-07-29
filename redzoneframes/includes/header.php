@@ -1,16 +1,11 @@
 <?php
 // header.php
-// Included at the top of every public page. Handles:
-// 1. the <head> section with SEO meta tags
-// 2. pulling the active theme from the database so template switching works site-wide
-// 3. the main navigation menu (responsive - collapses to a hamburger on mobile)
+// Included at the top of every public page. Handles the <head> section with SEO meta tags, pulls the active theme from the database so template switching works, abd  is the main navigation menu
 
-// every page that includes this header must already have session_start() called
-// before this file is included, if it needs to know who's logged in
+// every page that includes this header must already have session_start() called before this file is included, if it needs to know who's logged in
 require_once __DIR__ . '/db.php';
 
-// grab whichever theme the admin currently has active in site_settings
-// default to classic-field if for some reason the row is missing
+// grab whichever theme the admin currently has active in site_settings, default to classic-field if for some reason the row is missing
 $stmt = $pdo->prepare("SELECT setting_value FROM site_settings WHERE setting_key = 'active_theme'");
 $stmt->execute();
 $activeTheme = $stmt->fetchColumn();
@@ -18,9 +13,8 @@ if (!$activeTheme) {
     $activeTheme = 'classic-field';
 }
 
-// each page can set its own title/description before including this file
-// e.g. $pageTitle = "Shop - Red Zone Frames"; before require 'includes/header.php';
-// if a page forgets to set one, these defaults kick in so we never ship a blank title
+// each page can set its own title/description before including this file, for example: $pageTitle = "Shop - Red Zone Frames"; before require 'includes/header.php';
+// if a page does not set one, these defaults go in
 if (!isset($pageTitle)) {
     $pageTitle = "Red Zone Frames - Custom NFL Player Frames";
 }
@@ -41,7 +35,7 @@ if (!isset($pageDescription)) {
     <meta name="author" content="Red Zone Frames">
 
     <!-- favicon -->
-    <link rel="icon" type="image/png" href="/redzoneframes/images/favicon.png">
+ <link rel="icon" type="image/png" href="/redzoneframes/images/logo.png">
 
     <!-- google fonts: Anton for headings (bold sporty look), Inter for body text (clean/readable) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
