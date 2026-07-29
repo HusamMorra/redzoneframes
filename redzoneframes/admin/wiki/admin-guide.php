@@ -26,12 +26,8 @@ require_once __DIR__ . '/../../includes/header.php';
 
 <div class="static-page">
     <p><a href="database-guide.php" class="text-link">See the Database Guide</a> for how the data is structured.</p>
-
-    <!-- video walkthrough embedded from youtube -->
-    <div class="wiki-video-wrap">
-        <iframe width="700" height="394" src="https://www.youtube.com/embed/oz2C1-Sye4A" title="Admin Panel Tutorial - Red Zone Frames" frameborder="0" allowfullscreen></iframe>
-    </div>
-
+	 <p>Front-end, admin, and installation documentation can be found at the bottom of this page.</p>
+	
     <h2>Dashboard</h2>
         <p>The dashboard is the landing page after logging in. It shows quick stats (total orders, pending orders, pending player requests, registered customers) and a bar chart of total sales per player, based on real orders placed through the site.</p>
 
@@ -72,6 +68,18 @@ require_once __DIR__ . '/../../includes/header.php';
     <li>Replace OLD_VIDEO_ID with the new video's ID and save the file.</li> 
 </ol>
 <p>Right now there are 3 videos on the site: one on the How to Order wiki page, one on the How to Design Your Own wiki page, and one on this Admin Guide page.</p>
+
+	 <!-- video walkthrough embedded from youtube -->
+    <div class="wiki-video-wrap">
+        <iframe width="700" height="394" src="https://www.youtube.com/embed/oz2C1-Sye4A" title="Admin Panel Tutorial - Red Zone Frames" frameborder="0" allowfullscreen></iframe>
+    </div>
+	
+	<p>Additional documentation is also available in the GitHub repository:</p>
+<ul>
+    <li><a href="https://github.com/HusamMorra/redzoneframes/blob/main/docs/frontend-overview.md" class="text-link" target="_blank">Front-End Overview</a></li>
+    <li><a href="https://github.com/HusamMorra/redzoneframes/blob/main/docs/admin-guide.md" class="text-link" target="_blank">Admin Guide (repository copy)</a></li>
+    <li><a href="https://github.com/HusamMorra/redzoneframes/blob/main/docs/installation.md" class="text-link" target="_blank">Installation Guide</a></li>
+</ul>
     </div>
 </section>
 
