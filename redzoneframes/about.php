@@ -19,8 +19,6 @@ require_once __DIR__ . '/includes/header.php';
     <p>This site was built for a COMP 3340 project. While Red Zone Frames is a fictional business built for the assignment, the idea is real and I have sold many of these frames but 3D printed using PLA instead so all features fully work as this website can be used in the future.</p>
 
 <p>Have a question, a custom idea, or a player you think we should carry? See our <a href="contact.php" class="text-link">Contact page</a> or <a href="request-player.php" class="text-link">request a player</a> - we're always expanding the roster.</p>
-</section>
-
 <p>The 20 player frame graphics used throughout the catalog were generated with the help of AI image generation. Reference: OpenAI. (2026). ChatGPT (GPT-5.5) [Large language model]. https://chatgpt.com</p>
-
+</section>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
